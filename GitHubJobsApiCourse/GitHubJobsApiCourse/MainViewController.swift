@@ -8,27 +8,58 @@
 
 import UIKit
 
-class MainViewController: UICollectionViewController {
+class MainViewController: UICollectionViewController, UISearchBarDelegate {
     
     private let cellId = "searchCellID"
+    private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "GitHubJobs API"
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .white
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: cellId)
+        setupSearchBar()
         
     }
+    
+    let citySearchBar = UISearchBar()
+    
+    private func setupSearchBar() {
+        definesPresentationContext = true
+        navigationItem.searchController = self.searchController
+        searchController.searchBar.delegate = self
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .black
+        textFieldInsideSearchBar?.placeholder = "Position"
+        searchController.view.addSubview(citySearchBar)
+        citySearchBar.frame = CGRect(x: 10, y: searchController.searchBar.frame.height + 50 , width: view.frame.size.width - 30, height: 50)
+        citySearchBar.placeholder = "Location"
+        citySearchBar.layer.cornerRadius = 12
+        citySearchBar.delegate = self
+    }
+    
+    
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10.0, left: 1.0, bottom: 10, right: 1.0)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchViewCell
         
+        cell.layer.cornerRadius = 12
+        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailController = JobDetailsViewController()
+        navigationController?.pushViewController(detailController, animated: true)
     }
     
     

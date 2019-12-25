@@ -13,6 +13,8 @@
 		058A2DA023AEF11700B58914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058A2D9F23AEF11700B58914 /* Assets.xcassets */; };
 		058A2DA323AEF11700B58914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058A2DA123AEF11700B58914 /* LaunchScreen.storyboard */; };
 		058A2DAB23AEF3BB00B58914 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DAA23AEF3BB00B58914 /* SearchViewCell.swift */; };
+		058A2DB023B2D4A000B58914 /* JobDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DAF23B2D4A000B58914 /* JobDetailsViewController.swift */; };
+		058A2DB323B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DB223B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		058A2DA223AEF11700B58914 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058A2DA423AEF11700B58914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058A2DAA23AEF3BB00B58914 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		058A2DAF23B2D4A000B58914 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
+		058A2DB223B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutHelpers+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		058A2D9523AEF11200B58914 /* GitHubJobsApiCourse */ = {
 			isa = PBXGroup;
 			children = (
+				058A2DB123B2DA0400B58914 /* Helpers */,
 				058A2D9623AEF11200B58914 /* AppDelegate.swift */,
 				058A2D9823AEF11200B58914 /* SceneDelegate.swift */,
 				058A2D9A23AEF11200B58914 /* MainViewController.swift */,
@@ -63,8 +68,17 @@
 				058A2DA123AEF11700B58914 /* LaunchScreen.storyboard */,
 				058A2DA423AEF11700B58914 /* Info.plist */,
 				058A2DAA23AEF3BB00B58914 /* SearchViewCell.swift */,
+				058A2DAF23B2D4A000B58914 /* JobDetailsViewController.swift */,
 			);
 			path = GitHubJobsApiCourse;
+			sourceTree = "<group>";
+		};
+		058A2DB123B2DA0400B58914 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				058A2DB223B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +155,8 @@
 				058A2D9B23AEF11200B58914 /* MainViewController.swift in Sources */,
 				058A2D9723AEF11200B58914 /* AppDelegate.swift in Sources */,
 				058A2D9923AEF11200B58914 /* SceneDelegate.swift in Sources */,
+				058A2DB323B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift in Sources */,
+				058A2DB023B2D4A000B58914 /* JobDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
