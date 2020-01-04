@@ -30,7 +30,7 @@ class JobDetailsViewController: UIViewController {
     
     let jobTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "iOS Developer"
+        label.text = "Full-Time"
         label.font = .systemFont(ofSize: 16)
         label.textColor = .label
         return label
@@ -38,7 +38,7 @@ class JobDetailsViewController: UIViewController {
     
     let locationLabel: UILabel = {
         let label = UILabel()
-        label.text = "iOS Developer"
+        label.text = "Seattle, WA"
         label.font = .systemFont(ofSize: 16)
         label.textColor = .label
         return label
@@ -69,7 +69,7 @@ class JobDetailsViewController: UIViewController {
     
     let applyButton: UIButton = {
            let button = UIButton(type: .system)
-           button.setTitle("Visit Company's Website", for: .normal)
+           button.setTitle("Apply", for: .normal)
            button.tintColor = .white
            button.backgroundColor = .systemBlue
            button.layer.cornerRadius = 15
