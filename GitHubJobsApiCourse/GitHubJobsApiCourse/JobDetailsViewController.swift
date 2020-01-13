@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class JobDetailsViewController: UIViewController {
     
@@ -44,6 +45,8 @@ class JobDetailsViewController: UIViewController {
         return label
     }()
     
+    var companyUrl = "https://www.google.com/"
+    var applyUrl = ""
     
     let urlButton: UIButton = {
         let button = UIButton(type: .system)
@@ -51,9 +54,36 @@ class JobDetailsViewController: UIViewController {
         button.tintColor = .white
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(handleCompanyURL), for: .touchUpInside)
         return button
     }()
     
+    @objc func handleCompanyURL() {
+        
+        if companyUrl == "" {
+            let ac = UIAlertController(title: "Link is not available", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        
+        guard let url = URL(string: companyUrl) else { return }
+        let svc = SFSafariViewController(url: url)
+        self.present(svc, animated: true)
+    }
+    
+    
+    @objc func handleApplyURL() {
+        
+        if applyUrl == "" {
+            let ac = UIAlertController(title: "Link is not available to apply for this job", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        
+        guard let url = URL(string: applyUrl) else { return }
+        let svc = SFSafariViewController(url: url)
+        self.present(svc, animated: true)
+    }
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
@@ -73,6 +103,7 @@ class JobDetailsViewController: UIViewController {
            button.tintColor = .white
            button.backgroundColor = .systemBlue
            button.layer.cornerRadius = 15
+           button.addTarget(self, action: #selector(handleApplyURL), for: .touchUpInside)
            return button
        }()
 
@@ -91,9 +122,6 @@ class JobDetailsViewController: UIViewController {
         descriptionTextView.anchor(top: stackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 20, right: 20))
         view.addSubview(applyButton)
         applyButton.anchor(top: descriptionTextView.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 70, bottom: 30, right: 70))
-        
-        
-
         
     }
     
