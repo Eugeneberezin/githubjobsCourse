@@ -125,9 +125,20 @@ class JobDetailsViewController: UIViewController {
            button.addTarget(self, action: #selector(handleApplyURL), for: .touchUpInside)
            return button
        }()
+    
+    var pinchGesture = UIPinchGestureRecognizer()
+    
+    @objc func pinchText(sender: UIPinchGestureRecognizer) {
+        var pointSize = descriptionTextView.font?.pointSize
+        pointSize = ((sender.velocity > 0) ? 1 : -1) * 1 + pointSize!
+        descriptionTextView.font = UIFont( name: "arial", size: (pointSize)!)
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchText(sender:)))
+        descriptionTextView.addGestureRecognizer(pinchGesture)
         view.backgroundColor = .white
         view.addSubview(logoImageview)
         logoImageview.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10), size: .init(width: 80, height: 100))
