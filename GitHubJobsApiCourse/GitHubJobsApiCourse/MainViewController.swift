@@ -16,7 +16,7 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "GitHubJobs API"
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor(named: "backgroundMain")
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: cellId)
         setupSearchBar()
         

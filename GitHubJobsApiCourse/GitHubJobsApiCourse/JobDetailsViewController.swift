@@ -109,7 +109,7 @@ class JobDetailsViewController: UIViewController {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 14)
         textView.textAlignment = .left
-        textView.backgroundColor = .cyan
+        textView.backgroundColor = UIColor(named: "textView")
         textView.isEditable = false
         textView.layer.cornerRadius = 12
         return textView
@@ -139,7 +139,7 @@ class JobDetailsViewController: UIViewController {
         super.viewDidLoad()
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchText(sender:)))
         descriptionTextView.addGestureRecognizer(pinchGesture)
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundCell")
         view.addSubview(logoImageview)
         logoImageview.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10), size: .init(width: 80, height: 100))
         let stackView = UIStackView(arrangedSubviews: [companyLabel, titleLabel, jobTypeLabel, locationLabel, urlButton])

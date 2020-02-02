@@ -57,7 +57,7 @@ class SearchViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .lightGray
+        backgroundColor = UIColor(named: "backgroundCell")
         addSubview(logoImageView)
         logoImageView.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 10), size: .init(width: 80, height: 100))
         let stackView = UIStackView(arrangedSubviews: [companyLabel, titleLabel, typeLabel, locationLabel])
