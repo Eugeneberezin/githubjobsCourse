@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Result: Codable {
+struct Results: Codable {
     
     var type: String?
     var url: String?

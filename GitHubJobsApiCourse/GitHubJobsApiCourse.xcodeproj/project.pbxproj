@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05563FA12404C90700F1636F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05563FA02404C90700F1636F /* ErrorMessage.swift */; };
+		05563FA42404C9B600F1636F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05563FA32404C9B600F1636F /* Service.swift */; };
 		058A2D9723AEF11200B58914 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2D9623AEF11200B58914 /* AppDelegate.swift */; };
 		058A2D9923AEF11200B58914 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2D9823AEF11200B58914 /* SceneDelegate.swift */; };
 		058A2D9B23AEF11200B58914 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2D9A23AEF11200B58914 /* MainViewController.swift */; };
@@ -15,10 +17,12 @@
 		058A2DAB23AEF3BB00B58914 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DAA23AEF3BB00B58914 /* SearchViewCell.swift */; };
 		058A2DB023B2D4A000B58914 /* JobDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DAF23B2D4A000B58914 /* JobDetailsViewController.swift */; };
 		058A2DB323B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A2DB223B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift */; };
-		05EA37BC23F62265009C8676 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA37BB23F62265009C8676 /* File.swift */; };
+		05EA37BC23F62265009C8676 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA37BB23F62265009C8676 /* Results.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05563FA02404C90700F1636F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		05563FA32404C9B600F1636F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		058A2D9323AEF11200B58914 /* GitHubJobsApiCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubJobsApiCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058A2D9623AEF11200B58914 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058A2D9823AEF11200B58914 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +33,7 @@
 		058A2DAA23AEF3BB00B58914 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		058A2DAF23B2D4A000B58914 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
 		058A2DB223B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutHelpers+Extensions.swift"; sourceTree = "<group>"; };
-		05EA37BB23F62265009C8676 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		05EA37BB23F62265009C8676 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05563F9F2404C8EE00F1636F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				05563FA02404C90700F1636F /* ErrorMessage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		05563FA22404C9A300F1636F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				05563FA32404C9B600F1636F /* Service.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		058A2D8A23AEF11200B58914 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +82,8 @@
 		058A2D9523AEF11200B58914 /* GitHubJobsApiCourse */ = {
 			isa = PBXGroup;
 			children = (
+				05563FA22404C9A300F1636F /* Services */,
+				05563F9F2404C8EE00F1636F /* Utilities */,
 				05EA37BA23F62251009C8676 /* Models */,
 				058A2DB123B2DA0400B58914 /* Helpers */,
 				058A2D9623AEF11200B58914 /* AppDelegate.swift */,
@@ -87,7 +109,7 @@
 		05EA37BA23F62251009C8676 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05EA37BB23F62265009C8676 /* File.swift */,
+				05EA37BB23F62265009C8676 /* Results.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,8 +186,10 @@
 			files = (
 				058A2DAB23AEF3BB00B58914 /* SearchViewCell.swift in Sources */,
 				058A2D9B23AEF11200B58914 /* MainViewController.swift in Sources */,
-				05EA37BC23F62265009C8676 /* File.swift in Sources */,
+				05EA37BC23F62265009C8676 /* Results.swift in Sources */,
 				058A2D9723AEF11200B58914 /* AppDelegate.swift in Sources */,
+				05563FA12404C90700F1636F /* ErrorMessage.swift in Sources */,
+				05563FA42404C9B600F1636F /* Service.swift in Sources */,
 				058A2D9923AEF11200B58914 /* SceneDelegate.swift in Sources */,
 				058A2DB323B2DA2C00B58914 /* UILayoutHelpers+Extensions.swift in Sources */,
 				058A2DB023B2D4A000B58914 /* JobDetailsViewController.swift in Sources */,
