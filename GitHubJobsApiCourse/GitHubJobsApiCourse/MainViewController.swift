@@ -19,6 +19,8 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
         collectionView.backgroundColor = UIColor(named: "backgroundMain")
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: cellId)
         setupSearchBar()
+        
+        
         Service.shared.getResults(description: "Software Developer", location: "San Francisco") { result in
             switch result {
             case .success(let results):
