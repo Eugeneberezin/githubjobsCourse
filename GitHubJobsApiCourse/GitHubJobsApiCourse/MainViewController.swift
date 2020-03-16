@@ -12,6 +12,8 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
     
     private let cellId = "searchCellID"
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    private var jobResults = [Results]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +23,25 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
         setupSearchBar()
         
         
-        Service.shared.getResults(description: "Software Developer", location: "San Francisco") { result in
+        Service.shared.getResults(description: "Software Developer", location: "San Francisco") {[weak self] result in
             switch result {
             case .success(let results):
                 print(results)
+                self?.jobResults = results
+                
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+                
+                
             case .failure(let error):
                 print(error)
             }
         }
         
     }
+    
+    
     
     let citySearchBar = UISearchBar()
     
@@ -52,7 +63,7 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return jobResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -63,12 +74,15 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchViewCell
         
         cell.layer.cornerRadius = 12
+        let jobResult = jobResults[indexPath.item]
+        cell.jobResult = jobResult
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailController = JobDetailsViewController()
+        detailController.jobResult = jobResults[indexPath.item]
         navigationController?.pushViewController(detailController, animated: true)
     }
     

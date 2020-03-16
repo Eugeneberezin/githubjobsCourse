@@ -7,8 +7,22 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class SearchViewCell: UICollectionViewCell {
+    
+    
+    var jobResult: Results! {
+        didSet {
+            companyLabel.text = jobResult.company
+            titleLabel.text = jobResult.title
+            typeLabel.text = jobResult.type
+            locationLabel.text = jobResult.location
+            guard let url = URL(string: jobResult.companyLogo ?? "") else {return}
+            logoImageView.sd_setImage(with: url)
+        }
+    }
     
     let logoImageView: UIImageView = {
         let iv = UIImageView()

@@ -11,6 +11,22 @@ import SafariServices
 
 class JobDetailsViewController: UIViewController {
     
+    var jobResult: Results! {
+        didSet {
+            companyLabel.text = jobResult.company
+            titleLabel.text = jobResult.title
+            jobTypeLabel.text = jobResult.type
+            locationLabel.text = jobResult.location
+            guard let url = URL(string: jobResult.companyLogo ?? "") else {return}
+            logoImageview.sd_setImage(with: url)
+            companyUrl = jobResult.companyUrl ?? ""
+            applyUrl = jobResult.url ?? ""
+            htmlText = jobResult.description ?? ""
+            let descriptionHTML = convertHTML(text: htmlText, attributedText: &descriptionTextView.attributedText)
+            descriptionTextView.attributedText = descriptionHTML
+        }
+    }
+    
     let logoImageview = AspectFitImageView(image: UIImage(named: "JRSTIux (1)"), cornerRadius: 12)
     
     let companyLabel: UILabel = {
