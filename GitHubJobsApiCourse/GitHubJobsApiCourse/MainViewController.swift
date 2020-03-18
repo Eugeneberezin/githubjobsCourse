@@ -21,24 +21,6 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
         collectionView.backgroundColor = UIColor(named: "backgroundMain")
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: cellId)
         setupSearchBar()
-        
-        
-        Service.shared.getResults(description: "Software Developer", location: "San Francisco") {[weak self] result in
-            switch result {
-            case .success(let results):
-                print(results)
-                self?.jobResults = results
-                
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-                
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
     }
     
     
@@ -48,6 +30,7 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
     private func setupSearchBar() {
         definesPresentationContext = true
         navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = .black
@@ -60,6 +43,40 @@ class MainViewController: UICollectionViewController, UISearchBarDelegate {
     }
     
     
+    var timer: Timer?
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if let position = searchController.searchBar.text, let city = citySearchBar.text {
+            timer?.invalidate()
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+                
+                Service.shared.getResults(description: position, location: city) {[weak self] result in
+                    switch result {
+                    case .success(let results):
+                        print(results)
+                        self?.jobResults = results
+                        
+                        DispatchQueue.main.async {
+                            self?.collectionView.reloadData()
+                        }
+                        
+                        
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            let ac = UIAlertController(title: error.rawValue, message: nil, preferredStyle: .alert)
+                            ac.addAction(UIAlertAction(title: "OK", style: .default))
+                            self?.present(ac, animated: true)
+                        }
+                        print(error)
+                    }
+                }
+            })
+            
+            
+        }
+        
+    }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
